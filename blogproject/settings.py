@@ -23,7 +23,7 @@ SECRET_KEY = 'i3k%m-808v3_)^h7975iw4v&fl5chq41^19j@u+b*vx7dvw*q$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['39.100.102.3', 'yang', '.zhaojingyi0126.com']
+ALLOWED_HOSTS = ['39.100.102.3', 'yang', '.zhaojingyi0126.com','127.0.0.1']
 
 # Application definition
 # 在这里注册你添加的应用
