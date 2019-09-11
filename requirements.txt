@@ -3,3 +3,6 @@ Markdown
 Pygments
 pytz
 sqlparse
+whoosh
+django-haystack
+jieba
