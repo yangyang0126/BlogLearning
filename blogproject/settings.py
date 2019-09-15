@@ -26,7 +26,8 @@ SECRET_KEY = 'i3k%m-808v3_)^h7975iw4v&fl5chq41^19j@u+b*vx7dvw*q$'
 # ALLOWED_HOSTS = []
 DEBUG = False
 ALLOWED_HOSTS = ['39.100.102.3', 'yang', '.zhaojingyi0126.com']
-
+# DEBUG = True 
+# ALLOWED_HOSTS = []
 # Application definition
 # 在这里注册你添加的应用
 INSTALLED_APPS = [

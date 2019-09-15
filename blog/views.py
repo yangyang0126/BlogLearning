@@ -24,7 +24,14 @@ def index(request):
         'welcome': '欢迎访问我的博客首页'
     })
 """
+def top(request):    
+    return render(request, 'blog/top.html')
+    
+def home(request):    
+    return render(request, 'blog/home.html')
 
+def food(request):    
+    return render(request, 'blog/food.html')
 
 def index(request):
     post_list = Post.objects.all()

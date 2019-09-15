@@ -1,0 +1,97 @@
+{% load staticfiles %}
+{% load blog_tags %}
+
+<!DOCTYPE HTML>
+<!--
+	Parallelism by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>cook</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'food_assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'food_assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+
+						<!-- Items -->
+							<div class="items">
+
+								<div class="item intro span-2">
+									<h1>2019</h1>
+									<p>一个厨艺小白的进化史<br />
+									今年买了饭盒，成了带饭girl</p>
+								</div>								
+								
+								{% get_foodpicture_1 as food_list %}	
+									{% for title,path in food_list %}																
+									<article class="item thumb span-1">																	
+										<h2>{{title}}</h2>
+										<a href="images/fulls/01.jpg" class="image">	
+										<img src={{path}} alt="">													
+										</a>									
+									</article>
+									{% endfor %}		
+
+							</div>
+
+						<!-- Items -->
+							<div class="items">
+
+								{% get_foodpicture_2 as food_list %}	
+									{% for title,path in food_list %}
+																
+									<article class="item thumb span-1">																	
+										<h2>{{title}}</h2>
+										<a href="images/fulls/01.jpg" class="image">	
+										<img src={{path}} alt="">													
+										</a>
+									
+									</article>
+									{% endfor %}
+								
+							</div>
+
+					</section>
+
+				<!-- Footer -->
+					<section id="footer">
+						<section>
+							<p>This is <strong>Parallelism</strong>, a responsive portfolio site template by <a href="http://html5up.net">HTML5 UP</a>. Free for personal
+							and commercial use under the <a href="http://html5up.net/license">Creative Commons Attribution</a> license.</p>
+						</section>
+						<section>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+								<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; 2019</li><li> <a href="http://www.beian.miit.gov.cn/">沪ICP备19030271号</a></li>
+							</ul>
+						</section>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'food_assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'food_assets/js/jquery.poptrox.min.js' %}"></script>
+			<script src="{% static 'food_assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'food_assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'food_assets/js/util.js' %}"></script>
+			<script src="{% static 'food_assets/js/main.js' %}"></script>
+
+	</body>
+</html>
