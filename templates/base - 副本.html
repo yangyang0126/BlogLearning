@@ -1,0 +1,251 @@
+{% load staticfiles %}
+{% load blog_tags %}
+
+<!DOCTYPE HTML>
+<!--
+	Striped by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>博客文章</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'details/css/main.css' %}" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Content -->
+			<div id="content">
+				<div class="inner">				
+
+					<!-- Post -->
+					    {% if error_msg %}
+							<p>{{ error_msg }}</p>
+						{% endif %}
+	
+					    {% for post in post_list %}
+						<article class="box post post-excerpt">							
+						    <header>								
+								<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+								<p>
+									<a href="{% url 'blog:category' post.category.pk %}">{{ post.category.name }}</a>
+									
+								</p>
+							</header>
+							<div class="info">
+								<span class="date"><span class="month">{{ post.get_month}}<span>y</span></span> <span class="day">{{ post.get_day }}</span><span class="year">, {{ post.get_year}}</span></span>
+								<ul class="stats">
+									<li><a href="{{ post.get_absolute_url }}" class="icon solid fa-book">{{ post.views }} </a></li>
+									<li><a href="{{ post.get_absolute_url }}" class="icon fa-heart">{{ post.comment_set.count }}</a></li>
+									<li><a href="{{ post.get_absolute_url }}#comment-area" class="icon fa-comment">{{ post.comment_set.count }}</a></li>
+									
+								</ul>
+							</div>
+							<a href={{ post.firstimage }} class="image featured"><img src={{ post.firstimage }} alt="" /></a>
+							<p>
+								{{ post.excerpt|safe }}...
+							</p>
+						</article>
+						{% empty %}
+							<div class="no-post">暂时还没有发布的文章！</div>
+						{% endfor %}
+
+					<!-- Pagination -->
+						<div class="pagination">
+							<!--<a href="#" class="button previous">Previous Page</a>-->
+							<div class="pages">
+								<ul>
+								{% if first %}
+									<a href="?page=1">1</a>
+								{% endif %}
+								{% if left %}
+									{% if left_has_more %}
+										<span>&hellip;</span>
+									{% endif %}
+									{% for i in left %}
+										<a href="?page={{ i }}">{{ i }}</a>
+									{% endfor %}
+								{% endif %}								
+									<a class="active" href="?page={{ page_obj.number }}" >{{ page_obj.number }}</a>								
+								{% if right %}
+									{% for i in right %}										
+											<a href="?page={{ i }}">{{ i }}</a>										
+									{% endfor %}
+									{% if right_has_more %}
+										<span>&hellip;</span>
+									{% endif %}
+								{% endif %}
+								{% if last %}									
+										<a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a>									
+								{% endif %}
+								</ul>
+							</div>
+							<a href="#" class="button next">Next Page</a>
+						</div>
+
+				</div>
+			</div>
+
+		<!-- Sidebar -->
+			<div id="sidebar">
+			
+				<!-- Logo -->
+					<h1 id="logo"><a href="#">目录</a></h1>			
+					
+
+				<!-- 分类 -->
+					<nav id="nav">
+						<header>
+							<h2>全部分类</h2>
+						</header>					
+						{% get_categories as category_list %}
+						    <ul>
+							{% for category in category_list %}
+							<li>
+								<a href="{% url 'blog:category' category.pk %}">
+								{{ category.name }}
+								[{{ category.num_posts }}]
+							    </a>
+							</li>
+							{% empty %}
+							暂无分类！
+							{% endfor %}
+						    </ul>
+					</nav>
+
+				<!-- Search -->
+					<section class="box search">
+						<form method="post" action="{% url 'blog:search' %}">
+							<input type="text" class="text" name="search" placeholder="搜索" />
+						</form>
+					</section>
+				
+					
+				<!-- 标签云 -->
+					<section class="box tag-cloud">
+						<header>
+							<h2>标签云</h2>
+						</header>
+						{% get_tags as tag_list %}
+						 <ul>
+							{% for tag in tag_list %}
+							<li>
+							    <a href="{% url 'blog:tag' tag.pk %}">{{ tag.name }}</a>	
+							</li>
+							{% empty %}
+							暂无标签！
+							{% endfor %}
+						  </ul>
+					</section>
+
+				
+
+				<!-- Calendar -->
+					<section class="box calendar">
+						<div class="inner">
+							<table>
+								<caption>July 2014</caption>
+								<thead>
+									<tr>
+										<th scope="col" title="Monday">M</th>
+										<th scope="col" title="Tuesday">T</th>
+										<th scope="col" title="Wednesday">W</th>
+										<th scope="col" title="Thursday">T</th>
+										<th scope="col" title="Friday">F</th>
+										<th scope="col" title="Saturday">S</th>
+										<th scope="col" title="Sunday">S</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td colspan="4" class="pad"><span>&nbsp;</span></td>
+										<td><span>1</span></td>
+										<td><span>2</span></td>
+										<td><span>3</span></td>
+									</tr>
+									<tr>
+										<td><span>4</span></td>
+										<td><span>5</span></td>
+										<td><a href="#">6</a></td>
+										<td><span>7</span></td>
+										<td><span>8</span></td>
+										<td><span>9</span></td>
+										<td><a href="#">10</a></td>
+									</tr>
+									<tr>
+										<td><span>11</span></td>
+										<td><span>12</span></td>
+										<td><span>13</span></td>
+										<td class="today"><a href="#">14</a></td>
+										<td><span>15</span></td>
+										<td><span>16</span></td>
+										<td><span>17</span></td>
+									</tr>
+									<tr>
+										<td><span>18</span></td>
+										<td><span>19</span></td>
+										<td><span>20</span></td>
+										<td><span>21</span></td>
+										<td><span>22</span></td>
+										<td><a href="#">23</a></td>
+										<td><span>24</span></td>
+									</tr>
+									<tr>
+										<td><a href="#">25</a></td>
+										<td><span>26</span></td>
+										<td><span>27</span></td>
+										<td><span>28</span></td>
+										<td class="pad" colspan="3"><span>&nbsp;</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+
+				<!-- 归档 -->
+					<section class="box archives">
+						<header>
+							<h2>归档</h2>
+						</header>
+						{% archives as date_list %}
+						    <ul>
+							{% for date in date_list %}
+							<li>
+							  <a href="{% url 'blog:archives' date.year date.month %}">
+								  {{ date.year }} 年 {{ date.month }} 月
+							  </a>
+							</li>
+							{% empty %}
+							暂无归档！
+							{% endfor %}
+						    </ul>
+					</section>
+					
+					<section class="box home-icons">
+						<ul>
+							<li><a href="#top" id="top-link"><span class="icon solid fa-home"></span></a></li>						
+							<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th"></span></a></li>
+							<li><a href="#about" id="about-link"><span class="icon solid fa-user"></span></a></li>
+							<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope"></span></a></li>
+						</ul>
+					</section>	
+					
+						
+				<!-- Copyright -->
+					<ul id="copyright">
+						<li>&copy; 2019<br /> <a href="http://www.beian.miit.gov.cn/">沪ICP备19030271号</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'details/js/jquery.min.js' %}"></script>
+			<script src="{% static 'details/js/browser.min.js' %}"></script>
+			<script src="{% static 'details/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'details/js/util.js' %}"></script>
+			<script src="{% static 'details/js/main.js' %}"></script>
+
+	</body>
+</html>

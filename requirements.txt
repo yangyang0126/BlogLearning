@@ -6,3 +6,4 @@ sqlparse
 whoosh
 django-haystack
 jieba
+django-mdeditor

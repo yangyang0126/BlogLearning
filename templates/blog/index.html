@@ -1,74 +1,70 @@
-﻿{% extends 'base.html' %}
+{% extends 'base.html' %}
 
 {% block main %}
-    {% if error_msg %}
-        <p>{{ error_msg }}</p>
-    {% endif %}
 
-    {% for post in post_list %}
-        <article class="post post-{{ post.pk }}">
-            <header class="entry-header">
-                <h1 class="entry-title">
-                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                </h1>
-                <div class="entry-meta">
-                    <span class="post-category">
-                        <a href="{% url 'blog:category' post.category.pk %}">{{ post.category.name }}</a></span>
-                    <span class="post-date"><a href="#"><time class="entry-date"
-                                                              datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
-                    <span class="post-author"><a href="#">{{ post.author }}</a></span>
-                    <span class="comments-link">
-                        <a href="{{ post.get_absolute_url }}#comment-area">{{ post.comment_set.count }} 评论</a></span>
-                    <span class="views-count"><a href="{{ post.get_absolute_url }}">{{ post.views }} 阅读</a></span>
-                </div>
-            </header>
-            <div class="entry-content clearfix">
-                <p>{{ post.excerpt }}...</p>
-                <div class="read-more cl-effect-14">
-                    <a href="{{ post.get_absolute_url }}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
-                </div>
-            </div>
-        </article>
-    {% empty %}
-        <div class="no-post">暂时还没有发布的文章！</div>
-    {% endfor %}
+	{% if error_msg %}
+		<p>{{ error_msg }}</p>
+	{% endif %}
+	
+<!-- Post -->
+	{% for post in post_list %}
+	<article class="box post post-excerpt">							
+		<header>								
+			<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+			<p>
+				<a href="{% url 'blog:category' post.category.pk %}">{{ post.category.name }}</a>
+				
+			</p>
+		</header>
+		<div class="info">
+			<span class="date"><span class="month">{{ post.get_month}}<span>y</span></span> <span class="day">{{ post.get_day }}</span><span class="year">, {{ post.get_year}}</span></span>
+			<ul class="stats">
+				<li><a href="{{ post.get_absolute_url }}" class="icon solid fa-book">{{ post.views }} </a></li>
+				<li><a href="{{ post.get_absolute_url }}" class="icon fa-heart">{{ post.comment_set.count }}</a></li>
+				<li><a href="{{ post.get_absolute_url }}#comment-area" class="icon fa-comment">{{ post.comment_set.count }}</a></li>
+				
+			</ul>
+		</div>
+		<a href={{ post.firstimage }} class="image featured"><img src={{ post.firstimage }} alt="" /></a>
+		<p>
+			{{ post.excerpt|safe }}...
+		</p>
+	</article>
+	{% empty %}
+		<div class="no-post">暂时还没有发布的文章！</div>
+	{% endfor %}
 
-    {% comment %}
-    完善的分页导航
-    {% endcomment %}
-    {% if is_paginated %}
-        <div class="pagination">
-            <ul>
-                {% if first %}
-                    <li><a href="?page=1">1</a></li>
-                {% endif %}
-                {% if left %}
-                    {% if left_has_more %}
-                        <li><span>...</span></li>
-                    {% endif %}
-                    {% for i in left %}
-                        <li><a href="?page={{ i }}">{{ i }}</a></li>
-                    {% endfor %}
-                {% endif %}
-                <li>
-					<a class="current-page" href="?page={{ page_obj.number }}" >{{ page_obj.number }}</a>
-				</li>
-                {% if right %}
-                    {% for i in right %}
-                        <li>
-							<a href="?page={{ i }}">{{ i }}</a>
-						</li>
-                    {% endfor %}
-                    {% if right_has_more %}
-                        <li><span>...</span></li>
-                    {% endif %}
-                {% endif %}
-                {% if last %}
-                    <li>
-						<a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a>
-					</li>
-                {% endif %}
-            </ul>
-        </div>
-    {% endif %}
+	<!-- Pagination -->
+	<div class="pagination">
+		<!--<a href="#" class="button previous">Previous Page</a>-->
+		<div class="pages">
+			<ul>
+			{% if first %}
+				<a href="?page=1">1</a>
+			{% endif %}
+			{% if left %}
+				{% if left_has_more %}
+					<span>&hellip;</span>
+				{% endif %}
+				{% for i in left %}
+					<a href="?page={{ i }}">{{ i }}</a>
+				{% endfor %}
+			{% endif %}								
+				<a class="active" href="?page={{ page_obj.number }}" >{{ page_obj.number }}</a>								
+			{% if right %}
+				{% for i in right %}										
+						<a href="?page={{ i }}">{{ i }}</a>										
+				{% endfor %}
+				{% if right_has_more %}
+					<span>&hellip;</span>
+				{% endif %}
+			{% endif %}
+			{% if last %}									
+					<a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a>									
+			{% endif %}
+			</ul>
+		</div>
+		<a href="#" class="button next">Next Page</a>
+	</div>
+	
 {% endblock main %}

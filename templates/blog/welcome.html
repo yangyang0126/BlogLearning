@@ -1,0 +1,52 @@
+{% load staticfiles %}
+{% load blog_tags %}
+
+<!DOCTYPE HTML>
+<!--
+	Aerial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>洋阳的博客</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'list_assets/css/main.css' %}"/>
+		<noscript><link rel="stylesheet" href="{% static 'list_assets/css/main.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Zhao JingYI</h1>
+						<p>All the world is a stage &nbsp;&bull;&nbsp; I just want to play my part</p>
+						<nav>
+							<ul>
+								<li><a href="{% url 'blog:home' %}" class="icon solid fa-home"><span class="label">Top</span></a></li>
+								<li><a href="home#portfolio" class="icon solid fa-th"><span class="label">Portfolio</span></a></li>
+								<li><a href="home#about" class="icon solid fa-user"><span class="label">About Me</span></a></li>
+								<li><a href="https://github.com/yangyang0126" class="icon brands fa-github"><span class="label">Github</span></a></li>
+								<li><a href="home#contact" class="icon solid fa-envelope"><span class="label">Contact</span></a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; 2019 - <a href="http://www.beian.miit.gov.cn/">沪ICP备19030271号</a>.</span>
+					</footer>
+
+			</div>
+		</div>
+		<script>
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
+</html>

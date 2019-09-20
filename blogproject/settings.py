@@ -24,10 +24,10 @@ SECRET_KEY = 'i3k%m-808v3_)^h7975iw4v&fl5chq41^19j@u+b*vx7dvw*q$'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 # ALLOWED_HOSTS = []
-DEBUG = False
-ALLOWED_HOSTS = ['39.100.102.3', 'yang', '.zhaojingyi0126.com']
-# DEBUG = True 
-# ALLOWED_HOSTS = []
+# DEBUG = False
+# ALLOWED_HOSTS = ['39.100.102.3', 'yang', '.zhaojingyi0126.com']
+DEBUG = True 
+ALLOWED_HOSTS = []
 # Application definition
 # 在这里注册你添加的应用
 INSTALLED_APPS = [
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog', # 应用：博客功能
     'comments', # 应用：评论功能
+    'mdeditor', # Markdown 编辑器
 ]
 
 MIDDLEWARE = [
@@ -116,5 +117,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# 添加媒体文件的路径配置
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+

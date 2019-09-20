@@ -3,50 +3,207 @@
 
 <!DOCTYPE HTML>
 <!--
-	Aerial by HTML5 UP
+	Prologue by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 	<head>
-		<title>洋阳的博客</title>
+		<title>YangZ-Top</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="{% static 'list_assets/css/main.css' %}"/>
-		<noscript><link rel="stylesheet" href="{% static 'list_assets/css/main.css' %}" /></noscript>
+		<link rel="stylesheet" href="{% static 'top_assets/css/main.css' %}" />
 	</head>
 	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
 
-				<!-- Header -->
-					<header id="header">
-						<h1>Zhao JingYI</h1>
-						<p>All the world is a stage &nbsp;&bull;&nbsp; I just want to play my part</p>
-						<nav>
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="{% static 'images/me.jpg' %}" alt="" /></span>
+							<h1 id="title">Zhao JingYI</h1>
+							<p>学习让我们快乐</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
 							<ul>
-								<li><a href="{% url 'blog:top' %}" class="icon solid fa-home"><span class="label">Top</span></a></li>
-								<li><a href="top#portfolio" class="icon solid fa-th"><span class="label">Portfolio</span></a></li>
-								<li><a href="top#about" class="icon solid fa-user"><span class="label">About Me</span></a></li>
-								<li><a href="https://github.com/yangyang0126" class="icon brands fa-github"><span class="label">Github</span></a></li>
-								<li><a href="top#contact" class="icon solid fa-envelope"><span class="label">Contact</span></a></li>
+								<li><a href="#top" id="top-link"><span class="icon solid fa-home">首页</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">博客</span></a></li>
+								<li><a href="#about" id="about-link"><span class="icon solid fa-user">关于</span></a></li>
+								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">联系</span></a></li>
 							</ul>
 						</nav>
-					</header>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy; 2019 - <a href="http://www.beian.miit.gov.cn/">沪ICP备19030271号</a>.</span>
-					</footer>
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="{% url 'blog:home' %}" class="icon solid fa-home"><span class="label">Top</span></a></li>
+							<li><a href="home#portfolio" class="icon solid fa-th"><span class="label">Portfolio</span></a></li>
+							<li><a href="home#about" class="icon solid fa-user"><span class="label">About Me</span></a></li>
+							<li><a href="https://github.com/yangyang0126" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="home#contact" class="icon solid fa-envelope"><span class="label">Contact</span></a></li>
+						</ul>
+
+				</div>
 
 			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header>
+								<h2 class="alt">Hello! 欢迎来到我的世界！
+								</h2>
+								<p>Learning by doing，Learning by teaching<br />
+								在这里学习，在这里记录，在这里成长</p>
+							</header>
+
+							<footer>
+								<a href="#portfolio" class="button scrolly">从这里开始</a>
+							</footer>
+
+						</div>
+					</section>
+
+				<!-- Portfolio -->
+					<section id="portfolio" class="two">
+						<div class="container">
+
+							<header>
+								<h2>博客</h2>
+							</header>
+
+							<p>生命不止，学习不停</p>
+
+							<div class="row">
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="{% url 'blog:index' %}" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
+										<header>
+											<h3>全部</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
+										<header>
+											<h3>Python</h3>
+										</header>
+									</article>
+								</div>
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="{% url 'blog:index' %}" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
+										<header>
+											<h3>Office</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
+										<header>
+											<h3>日常</h3>
+										</header>
+									</article>
+								</div>
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="{% url 'blog:food' %}" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
+										<header>
+											<h3>学习</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="{% static 'images/pic02.jpg' %}" alt="" /></a>
+										<header>
+											<h3>旅行</h3>
+										</header>
+									</article>
+								</div>
+							</div>
+
+						</div>
+					</section>
+
+				<!-- About Me -->
+					<section id="about" class="three">
+						<div class="container">
+
+							<header>
+								<h2>关于</h2>
+							</header>
+
+							<a href="#" class="image featured"><img src="{% static 'images/pic08.jpg' %}" alt="" /></a>
+
+							<p style="font-size:20px;text-align:left">
+							
+							    我因为英语太烂，下载了一个学习英语的APP。学习了一段时间后，在APP里面认识了一群志同道合的朋友。
+							我们私底下成立了微信群，说要一起学英语。学着学着，就有了监督机制。大家希望可以统计自己的打卡时间。
+							作为群主，我觉得我应该满足大家的期待。于是我开始学习Python。<br />
+							学习Python的道路上，小伙伴一直在群里鼓励我，肯定我的每一个进步。我做了一些小项目后，开始构建一个网页。
+							于是，就有了现在这个网页。<br />
+							我将在这里，记录我学习的点点滴滴。希望我能一直更新，这就说明，我一直在学习呀。
+						
+							</p>
+
+						</div>
+					</section>
+
+				<!-- Contact -->
+					<section id="contact" class="four">
+						<div class="container">
+
+							<header>
+								<h2>联系</h2>
+							</header>
+
+							<p>这个功能还没有建设好，请稍等~</p>
+
+							<form method="post" action="#">
+								<div class="row">
+									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="col-12">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="col-12">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; 2019. <a href="http://www.beian.miit.gov.cn/">沪ICP备19030271号</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="{% static 'top_assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'top_assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'top_assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'top_assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'top_assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'top_assets/js/util.js' %}"></script>
+			<script src="{% static 'top_assets/js/main.js' %}"></script>
+
 	</body>
 </html>
