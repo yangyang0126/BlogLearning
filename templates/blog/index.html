@@ -27,7 +27,7 @@
 		</div>
 		<a href={{ post.firstimage }} class="image featured"><img src={{ post.firstimage }} alt="" /></a>
 		<p>
-			{{ post.excerpt|safe }}
+			{{ post.excerpt|safe }}...
 		</p>
 	</article>
 	{% empty %}
@@ -35,6 +35,7 @@
 	{% endfor %}
 
 	<!-- Pagination -->
+	{% if is_paginated %}
 	<div class="pagination">
 		<!--<a href="#" class="button previous">Previous Page</a>-->
 		<div class="pages">
@@ -64,7 +65,8 @@
 			{% endif %}
 			</ul>
 		</div>
-		<a href="#" class="button next">Next Page</a>
+		
 	</div>
+	{% endif %}
 	
 {% endblock main %}
