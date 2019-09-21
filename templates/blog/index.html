@@ -39,7 +39,7 @@
 	<div class="pagination">
 		<!--<a href="#" class="button previous">Previous Page</a>-->
 		<div class="pages">
-			<ul>
+			
 			{% if first %}
 				<a href="?page=1">1</a>
 			{% endif %}
@@ -63,7 +63,7 @@
 			{% if last %}									
 					<a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a>									
 			{% endif %}
-			</ul>
+			
 		</div>
 		
 	</div>
