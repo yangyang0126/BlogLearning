@@ -47,7 +47,7 @@
 				<!-- 分类 -->
 					<nav id="nav">
 						<header>
-							<h2>全部分类</h2>
+							<h2><a href="{% url 'blog:index' %}">全部分类</a></h2>
 						</header>					
 						{% get_categories as category_list %}
 						    <ul>
