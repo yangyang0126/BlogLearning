@@ -44,7 +44,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
-    paginate_by = 1
+    paginate_by = 3
 
 
     
@@ -208,7 +208,7 @@ def archives(request, year, month):
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 
-class ArchivesView(ListView):
+class ArchivesView(IndexView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
@@ -227,7 +227,7 @@ def category(request, pk):
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 
-class CategoryView(ListView):
+class CategoryView(IndexView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
@@ -237,7 +237,7 @@ class CategoryView(ListView):
         return super(CategoryView, self).get_queryset().filter(category=cate)
 
 
-class TagView(ListView):
+class TagView(IndexView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
