@@ -2565,6 +2565,8 @@ input, select, textarea {
 					width: 2.75em;
 					height: 2.75em;
 					line-height: 2.75em;
+					padding-top: 0;
+					padding-bottom: 0;
 				}
 
 				.pagination .button {
