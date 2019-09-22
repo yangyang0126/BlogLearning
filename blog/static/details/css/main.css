@@ -2549,32 +2549,37 @@ input, select, textarea {
 
 		/* Pagination */
 
-			.pagination {
-				padding: 3em 0 0 0;
-			}
-
-				.pagination .previous {
-					margin-right: 0.6em;
-				}
-
-				.pagination .next {
-					margin-left: 0.2em;
-				}
-
-				.pagination .pages a {
-					width: 2.75em;
-					height: 2.75em;
-					line-height: 2.75em;
-					padding-top: 0;
-					padding-bottom: 0;
-				}
-
-				.pagination .button {
-					height: 2.75em;
-					padding-top: 0;
-					padding-bottom: 0;
-					line-height: 2.75em;
-				}
+			.pagination {margin-top: 25px; text-align: center;}
+.pagination a {
+  display: inline-block;
+  line-height: 38px;
+  padding: 0 15px;
+  margin-right: 4px;
+  text-align: center;
+  background-color: #fff;
+  user-select: none;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #d7dde4;
+  border-radius: 4px;
+  transition: all .2s ease-in-out;
+}
+.pagination a:hover {
+  color: #A161BF;
+  border: 1px solid #A161BF;
+}
+.pagination .current-page {color: white; background-color: #A161BF;}
+.pagination .current-page:hover {
+  color: white;
+  border: 1px solid #A161BF;
+}
+.pagination span {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 38px;
+  padding: 0 8px;
+  margin-right: 4px;
+}
 
 		/* Box */
 
